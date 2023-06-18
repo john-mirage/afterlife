@@ -1,23 +1,32 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="fr">
-<head>
+<html lang="fr" dir="ltr">
+
+  <head>
     <meta charset="UTF-8"></meta>
-    {% block title %}{% endblock %}
-</head>
-<body>
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <title>Afterlife</title>
+    <meta name="title" content="Afterlife" />
+    <meta name="description" content="Afterlife is a blog focused on web development and Linux" />
+  </head>
 
-<!-- On ajoute le menu à l'intérieur d'une balise nav -->
-<nav>
-    <a href="{% url 'posts:home' %}">Accueil</a>
-    {% if request.user.is_authenticated %}
-        <a href="{% url 'posts:create' %}">Ajouter un article</a>
-    {% endif %}
-</nav>
+  <body>
 
-<section id="blog">
-    {% block content %}
-    {% endblock %}
-</section>
+  <div class="container">
+    <nav>
+      <a href="{% url 'posts:home' %}">Accueil</a>
+    </nav>
 
-</body>
+    <section id="blog">
+      {% block content %}
+      {% endblock %}
+    </section>
+  </div>
+
+  </body>
+
 </html>

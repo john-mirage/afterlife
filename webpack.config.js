@@ -3,11 +3,18 @@ const path = require('path');
 
 module.exports = {
   context: path.resolve(__dirname, 'src'),
-  mode: 'development',
   entry: {
-    home: './index.js',
+    index: './index.js',
   },
-  plugins: [new MiniCssExtractPlugin()],
+  output: {
+    filename: "[name].js",
+    path: path.resolve(__dirname, 'src/static'),
+  },
+  mode: 'development',
+  plugins: [new MiniCssExtractPlugin({
+    filename: "[name].css",
+    chunkFilename: "[id].css",
+  })],
   module: {
     rules: [
       {

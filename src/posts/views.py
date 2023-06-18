@@ -13,21 +13,7 @@ class BlogHome(ListView):
             return queryset
 
         return queryset.filter(published=True)
-    
-class BlogPostCreate(CreateView):
-    model = BlogPost
-    template_name = 'posts/blogpost_create.html'
-    fields = ['title', 'content', ]
-
-class BlogPostEdit(UpdateView):
-    model = BlogPost
-    template_name = 'posts/blogpost_edit.html'
-    fields = ['title', 'content', 'published', ]
 
 class BlogPostDetail(DetailView):
     model = BlogPost
     context_object_name = "post"
-
-class BlogPostDelete(DeleteView):
-    model = BlogPost
-    success_url = reverse_lazy("posts:home")
