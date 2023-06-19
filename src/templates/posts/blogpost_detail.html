@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
+{% load markdown %}
 
 {% block content %}
   <article>
     <h1>{{ post.title }}</h1>
-    <div>{{ post.content|linebreaks|safe }}</div>
+    <div class="prose prose-slate">{{ post.content | markdown | safe }}</div>
   </article>
 {% endblock %}
